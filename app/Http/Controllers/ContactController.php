@@ -197,6 +197,7 @@ class ContactController extends Controller
             return Redirect::to('contacts');
 
         $contact = Contact::find($id);
+
         $contact->delete();
 
         return Redirect::to('contacts')->with('message', 'تم حذف جهة الاتصال بنجاح');
