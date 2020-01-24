@@ -32,8 +32,8 @@ class ContactController extends Controller
         foreach ($contacts as $contact) {
             $contact->last_uptade_by = User::find($contact->last_uptade_by)->name;
         }
-
-        return view('contacts.index', ['contacts' => $contacts]);
+    
+	return view('contacts.index', ['contacts' => $contacts]);
     }
 
     /**
@@ -74,11 +74,11 @@ class ContactController extends Controller
         $contact = new Contact;
         $contact->full_name = $request->input("name");
         $contact->specialization = $request->input("spec");
-
+ 
         if ($request->input("spec") == "غير ذلك") {
             if (empty($request->input("else_spec")) || $request->input("else_spec") == "" || $request->input("else_spec") == null) {
                 return Redirect::back()->withErrors(['message' => 'يرجى كتابة التخصص في حال ذكر "غير ذلك"']);
-            }
+	   }
 
             $contact->specialization = $request->input("else_spec");
         }
